@@ -32,4 +32,7 @@ Set JAVA_HOME & MAVEN_HOME as environment variables on Jenkins machine
 	source /etc/profile
 	#start Jenkins
 	sudo systemctl start jenkins
-	sudo systemctl stop/status jenkins
+	#stop jenkins
+	sudo systemctl stop jenkins
+	#enable Jenkins
+	sudo systemctl enable jenkins
