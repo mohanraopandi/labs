@@ -19,6 +19,13 @@
     curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
     sudo apt-get update ; clear
     sudo apt-get install -y kubelet kubeadm kubectl	
+    
+
+Verification steps::
+docker -v
+kubeadm version
+kubelet --version
+kubectl version --short
 	
 ### Step2: `On Master only:`
 
