@@ -21,11 +21,12 @@
     sudo apt-get install -y kubelet kubeadm kubectl	
     
 
-Verification steps::
-docker -v
-kubeadm version
-kubelet --version
-kubectl version --short
+	Verification steps::
+
+	docker -v
+	kubeadm version
+	kubelet --version
+	kubectl version --short
 	
 ### Step2: `On Master only:`
 
