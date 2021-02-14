@@ -64,7 +64,7 @@
 ```
    vi /tmp/inv 
    enter your servers in gruops called qa & prod 
-   ( look at the sample inventory file under https://github.com/lerndevops/samplejavaapp/tree/master/deploy )
+   ( look at the sample inventory file under https://github.com/mohanraopandi/samplejavaapp/tree/master/deploy )
    ensure to put only manager IPs in inventory file -- DO NOT PUT NODE IPs
 ```
 
@@ -131,7 +131,7 @@ Git Configuration in Jenkins console
 Jenkins ( home page ) ==> New Item ==> job1-compile ==> Freestyle project ==> ok
 insdie job parameters as below 
 
-	Source Code Management --> Git --> Repository URL (https://github.com/lerndevops/samplejavaapp)
+	Source Code Management --> Git --> Repository URL (https://github.com/mohanraopandi/samplejavaapp)
 	Build Triggers --> Poll SCM --> schedule (* * * * *)
 	Build --> (click on drop down) Invoke top-level Maven targets
 		Maven Version --> select value from drop down (ex: maven3.6) as confifure in Step12
@@ -144,7 +144,7 @@ Apply & Save
 Jenkins ( home page ) ==> New Item ==> job2-codereview ==> Freestyle project ==> ok
 insdie job parameters as below 
 
-	Source Code Management --> Git --> Repository URL (https://github.com/lerndevops/samplejavaapp)
+	Source Code Management --> Git --> Repository URL (https://github.com/mohanraopandi/samplejavaapp)
 	Build Triggers --> Build after other projects are built --> Projects to watch (job1-compile)
 	Build --> (click on drop down) Invoke top-level Maven targets
 		Maven Version --> select value from drop down (ex: maven3.6) as configured in Step12
@@ -158,7 +158,7 @@ Apply & Save
 Jenkins ( home page ) ==> New Item ==> job3-unittest ==> Freestyle project ==> ok
 insdie job parameters as below 
 
-	Source Code Management --> Git --> Repository URL (https://github.com/lerndevops/samplejavaapp)
+	Source Code Management --> Git --> Repository URL (https://github.com/mohanraopandi/samplejavaapp)
 	Build Triggers --> Build after other projects are built --> Projects to watch (job2-codereview)
 	Build --> (click on drop down) Invoke top-level Maven targets
 		Maven Version --> select value from drop down (ex: maven3.6) as configured in Step12
@@ -172,7 +172,7 @@ Apply & Save
 Jenkins ( home page ) ==> New Item ==> job4-package ==> Freestyle project ==> ok
 insdie job parameters as below 
 
-	Source Code Management --> Git --> Repository URL (https://github.com/lerndevops/samplejavaapp)
+	Source Code Management --> Git --> Repository URL (https://github.com/mohanraopandi/samplejavaapp)
 	Build Triggers --> Build after other projects are built --> Projects to watch (job3-unittest)
 	Build Environment --> Use secret text(s) or file(s) --> Bindings --> (click on dropdown Add) Secret text 
 		Variable: DOCKER_HUB_PWD
@@ -207,7 +207,7 @@ insdie job parameters as below
 	General --> select "This project is parameterized" --> click on dropdown "Add Parameter" --> select "String parameter"
 		Name: Package_Build_Number
 		
-	Source Code Management --> Git --> Repository URL (https://github.com/lerndevops/samplejavaapp)
+	Source Code Management --> Git --> Repository URL (https://github.com/mohanraopandi/samplejavaapp)
 		
 	Build --> (click on dropdown) Execute Shell --> command (enter below in box)
 		cd $WORKSPACE/deploy
@@ -228,7 +228,7 @@ insdie job parameters as below
 	General --> select "This project is parameterized" --> click on dropdown "Add Parameter" --> select "String parameter"
 		Name: pbn
 		
-	Source Code Management --> Git --> Repository URL (https://github.com/lerndevops/samplejavaapp)  ## must give automation test suit repository
+	Source Code Management --> Git --> Repository URL (https://github.com/mohanraopandi/samplejavaapp)  ## must give automation test suit repository
 		
 	Build --> (click on dropdown) Execute Shell --> command (enter below in box)
 		echo "Automations Test Cases Executed Successfully"
@@ -248,7 +248,7 @@ insdie job parameters as below
 	General --> select "This project is parameterized" --> click on dropdown "Add Parameter" --> select "String parameter"
 		Name: prod_release
 		
-	Source Code Management --> Git --> Repository URL (https://github.com/lerndevops/samplejavaapp)
+	Source Code Management --> Git --> Repository URL (https://github.com/mohanraopandi/samplejavaapp)
 		
 	Build --> (click on dropdown) Execute Shell --> command (enter below in box)
 		cd $WORKSPACE/deploy
@@ -266,7 +266,7 @@ Jenkins ( home page ) ==> My Views ==> New View ==> View Name Enter "CICD-View" 
 ```		
 #### you shoud see like below 
 
-![CICD-PIC](https://github.com/lerndevops/labs/blob/master/cicd-flow/CICD-Picture.PNG)
+![CICD-PIC](https://github.com/mohanraopandi/labs/blob/master/cicd-flow/CICD-Picture.PNG)
 
 ### Step15 -- `Run The Pipeline & Validate`
 
