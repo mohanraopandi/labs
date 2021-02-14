@@ -211,7 +211,8 @@ insdie job parameters as below
 		
 	Build --> (click on dropdown) Execute Shell --> command (enter below in box)
 		cd $WORKSPACE/deploy
-		sudo su ansible -c "ansible-playbook -i /tmp/inv deploy.yml -e 'env=qa build=$Package_Build_Number'"
+		##sudo su ansible -c "ansible-playbook -i /tmp/inv deploy.yml -e 'env=qa build=$Package_Build_Number'"
+		sudo su devops -c "ansible-playbook deploy.yml --extra-vars 'env=qa build=$Package_Build_Number'"
 
 	Post-build Actions --> (click on dropdown) trigger parameterized build on other projects
 		Projects to build: job6-Selenium-test
