@@ -25,3 +25,12 @@
  	You can use the database products you are already familiar with: MySQL, MariaDB, PostgreSQL, Oracle, Microsoft SQL Server.
  	You can get high availability with a primary instance and a synchronous secondary instance that you can fail over to when problems occur. You can also use MariaDB, Microsoft SQL Server, MySQL, Oracle, and PostgreSQL read replicas to increase read scaling.
  	In addition to the security in your database package, you can help control who can access your RDS databases by using AWS Identity and Access Management (IAM) to define users and permissions. You can also help protect your databases by putting them in a virtual private cloud.
+
+
+
+
+https://iq.aws.amazon.com/?utm=docs&service=Amazon%20Relational%20Database%20Service
+https://iq.aws.amazon.com/?utm=docs
+https://forums.aws.amazon.com/forum.jspa?forumID=60
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_BestPractices.html
