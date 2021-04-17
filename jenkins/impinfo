@@ -5,3 +5,5 @@ plugin.jenkins.com
 Build Triggers ===> Build periodically ===> ex: H/2 * * * *
                     Poll SCM ===> H/2 * * * *
                     
+Security Configuration 
+                    
