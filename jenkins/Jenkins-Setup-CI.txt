@@ -36,5 +36,6 @@ Plugin : Warnings Next Generation  & Option from Post build actions: Record comp
 job3-unittest    : test                 : target/surefire-reports/*.xml
                  
 job4-codecoverage : cobertura:cobertura -Dcobertura.report.format=xml  : target/site/cobertura/coverage.xml ( publish cobertura coverage report )
+Note: cobertura plugin is required.
                  
 job5-package     : package              : NA
