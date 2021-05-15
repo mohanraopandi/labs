@@ -1,10 +1,8 @@
 
 Lambda is an event-driven compute service. We have functions that execute when a trigger is triggered. In today’s lab, we will set up a trigger with Cloud watch Events.
-
 On top of that, we will need an IAM role that gives our lambda function permissions to Stop EC2 Instances. We will also add Cloud watch permissions in that role so that the lambda function can log the event every time it is triggered.
 
 Let’s get started with setting up the role:
-
 Go to the IAM console and click on role
 Click Create a Role
 Under AWS service, select Lambda. Click Next Permissions.
@@ -13,8 +11,7 @@ You should see a list of policies. Search for AmazonEC2FullAccess and check the 
 Also, search for CloudWatchFullAccess and check that box.
 Click Next Review.
 Choose a Name(eg: Lambda_EC2_cloudwatch_access) for the role. Add a description
-Click Create
- 
+Click Create 
 
 Now we should have a role that we can attach to our Lambda function.
 
@@ -28,57 +25,19 @@ Under role: Select choose an existing role
 Select the role we created earlier.
 Click on create function.
 Select Python 2.7 as the Runtime.
-Paste our python function:
- 
+Paste our python function: 
 
                                import boto3
-
                                client=boto3.client('ec2')
-
                                def lambda_handler(event, context):
-
                                response=client.describe_instances()
-
                                for reservation in response["Reservations"]:
-
                                       for instance in reservation["Instances"]:
-
                                            print(instance["InstanceId"] + "stopping")
-
                                            id=[instance["InstanceId"]]
-
                                client.stop_instances(InstanceIds=id)
-
                                return("Completed")
-							   
-							   
-							   
-							   import boto3
-
-client=boto3.client('ec2')
-
-def lambda_handler(event, context):
-    
-    response=client.describe_instances()
-   
-    
-    for reservation in response["Reservations"]:
-       
-       for instance in reservation["Instances"]:
-           
-           print(instance["InstanceId"] + "stopped")
-           
-           id = [instance["InstanceId"]]
-           
-           client.stop_instances(InstanceIds=id)
-           
-    
-    
-    
-    return "completed"
-
- 
-
+			       
 Click on Save and Test. You’ll see a configure test event window. Give the test event a name and click on create.
 Copy the Arn of the lambda function from the top of the page: (eg: arn:aws:lambda:us-east-1:771454434342637355:function:stop
 Cloudwatch Events Setup:
@@ -96,15 +55,10 @@ Click on Create.
 Now let’s go to our EC2 console and launch or start few ( 3 ) instances.
 
 It’s time to test the Lambda Function. Since we can’t wait until 12 am, let’s test the event manually.
-
 Go back to the Lambda function we created earlier and click Test.
-
 Check your EC2 console. Your EC2 instance must be stopping.
-
 That concludes the lab.
-
 Terminate the EC2 instance that you created earlier.
-
  
 
 *If you have errors in lambda function we can go to cloud watch logs and troubleshoot.
