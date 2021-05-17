@@ -1,3 +1,12 @@
+echo "# May172021" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/mohanraopandi/May172021.git
+git push -u origin main
+
+
 work with Git remote repositories
 
 pre requisite: create an account on https://github.com/ & login
