@@ -102,9 +102,9 @@ how to push images to private repo ( registry container by docker )
 
 how to push images offline ( docker save & docker load )
 ========================================================
-    docker save -o mycentos.tgz mycentos:v1
-    scp mycentos.tgz to target machine / server
-    docker load < mycentos.tgz
+    sudo docker save -o mycentos.tgz iamge1 image2 image3
+    sudo scp mycentos.tgz privateip:/tmp
+    sudo docker load < mycentos.tgz
 
 Advanced image concepts
 =======================
