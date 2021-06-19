@@ -278,6 +278,8 @@ Jenkins ( home page ) ==> My Views ==> New View ==> View Name Enter "CICD-View" 
 
 
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+
 cd $WORKSPACE
 sudo docker build --file Dockerfile --tag mohanraopandi/samplejavaapp:$BUILD_NUMBER .
 sudo docker login -u mohanraopandi -p $DOCKER_HUB_PWD
