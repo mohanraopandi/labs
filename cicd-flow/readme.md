@@ -274,3 +274,36 @@ Jenkins ( home page ) ==> My Views ==> New View ==> View Name Enter "CICD-View" 
 > validate the containers are deployed to QA & PROD without failure
 
 > re run the pipeline after the first successfull ru & validate older Version removed & new Version deployed on QA & PROD
+
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+cd $WORKSPACE
+sudo docker build --file Dockerfile --tag mohanraopandi/samplejavaapp:$BUILD_NUMBER .
+sudo docker login -u mohanraopandi -p $DOCKER_HUB_PWD
+sudo docker push mohanraopandi/samplejavaapp:$BUILD_NUMBER
+
+
+Manage jenkns===> Manage Credentails ===>Jenkins ===> Global Credentials===> Add credentials===> Secreate text ===>
+Secreate: <<Password>>
+ID: DOCKER_HUB_PASSWORD
+
+
+go to job config ==> Use secret text(s) or file(s) (Build Environment) ===> Add ===> Secreate text ===> Variable : DOCKER_HUB_PWD
+
+install Plugins:: Build with parameters & Parameterized Trigger
+package ===> Post build actions ===> Trigger parameterized build on other projects
+Projects to build : deploy-qa
+Trigger when build is : Stable
+Add Parameters===> Predefined parameters ===> Parameters: package_build_number=$BUILD_NUMBER
+
+
+deploy-qa===> This project is parameterized===> 
+String Parameter
+Name: package_build_number
+
+Execute Shell.
+cd $WORKSPACE/deploy
+sudo su devops -c "ansible-playbook -i /home/devops/myinv deploy-kube.yml --extra-vars 'env=qa build=$package_build_number'"
+
+
