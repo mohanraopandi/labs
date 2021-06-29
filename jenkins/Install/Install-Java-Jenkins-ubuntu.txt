@@ -20,7 +20,27 @@ Install Maven  ( on Jenkins machine )
 
 	cd /tmp ; sudo wget http://apachemirror.wuchna.com/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
 	cd /tmp ; sudo tar -xzf apache-maven-3.6.3-bin.tar.gz -C /opt
+	
+	
+	(or)
+	
+#Defaullt maven installation steps.	
+sudo apt-get update
+sudo apt-get install maven
 
+(or)
+
+#To install latest version of Maven.
+wget https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -P /tmp
+sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
+cd /opt
+sudo ln -s /opt/apache-maven-3.6.3 /opt/maven
+cd maven
+mvn --version
+
+MAVEN_HOME = /opt/apache-maven-3.6.3
+
+Ref:: https://linuxize.com/post/how-to-install-apache-maven-on-ubuntu-20-04/
 
 =============================================================================
 
